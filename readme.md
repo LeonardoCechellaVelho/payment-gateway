@@ -24,3 +24,6 @@ Babel permite utilizar os recursos mais atualizados da linguagem mesmo com os na
 
 ### 2.1.7 Porque devemos utilizar o webpack para aplicações em produção?
 Pois é possível organizar o projeto em arquivos separados e gerar um arquivo só de forma automatizada.
+
+### 2.1.8 Defina Clean Architecture e sua aplicação no projeto.
+Clean Architecture tem como objetivo organizar o código em camadas de modo que a regra de negócio fique separada das outras, separando essas camadas facilita na manutenção da aplicação.
