@@ -27,3 +27,6 @@ Pois é possível organizar o projeto em arquivos separados e gerar um arquivo s
 
 ### 2.1.8 Defina Clean Architecture e sua aplicação no projeto.
 Clean Architecture tem como objetivo organizar o código em camadas de modo que a regra de negócio fique separada das outras, separando essas camadas facilita na manutenção da aplicação.
+
+### 2.1.9 O que é uma API REST?
+API REST é um conjunto de regras da arquitetura para a construção de uma API.
