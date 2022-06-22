@@ -6,3 +6,6 @@ Projeto para ser aplicado no teste da Doutbox, é uma API de um gateway de pagam
 
 ### 2.1.1 O que é o NPM e sua aplicação dentro do projeto?
 NPM é um gerenciador de pacotes, ele é aplicado para instalação de bibliotecas que auxiliam no desenvolvimento do projeto.
+
+### 2.1.2 Quais as principais bibliotecas JavaScript que você já trabalhou?
+Por possuir mais contato com Angular, as principais foram @angular/material, @angular/router, @angular/forms, porém tive muito contato com rxjs, jquery, moment, express, mongoose e jwt
