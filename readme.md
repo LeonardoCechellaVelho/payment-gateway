@@ -9,3 +9,6 @@ NPM é um gerenciador de pacotes, ele é aplicado para instalação de bibliotec
 
 ### 2.1.2 Quais as principais bibliotecas JavaScript que você já trabalhou?
 Por possuir mais contato com Angular, as principais foram @angular/material, @angular/router, @angular/forms, porém tive muito contato com rxjs, jquery, moment, express, mongoose e jwt
+
+### 2.1.3 Qual a função da biblioteca express?
+Ela auxilia com a criação de rotas do sistema, permitindo trabalhar com requisições HTTP
