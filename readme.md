@@ -12,3 +12,6 @@ Por possuir mais contato com Angular, as principais foram @angular/material, @an
 
 ### 2.1.3 Qual a função da biblioteca express?
 Ela auxilia com a criação de rotas do sistema, permitindo trabalhar com requisições HTTP
+
+### 2.1.4 O que você entende como rotas da aplicação?
+Um sistema é composto por rotas, sendo que cada rota tem uma função, retornando uma informação e recebendo uma informação, dependendo do método HTTP, elas possuirão um caminho único, porém cada caminho pode receber vários métodos HTTP. 
