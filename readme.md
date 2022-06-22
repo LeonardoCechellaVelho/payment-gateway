@@ -18,3 +18,6 @@ Um sistema é composto por rotas, sendo que cada rota tem uma função, retornan
 
 ### 2.1.5 Quando é recomendado utilizar desestruturação?
 Desestruturação é bom para criar multiplas variáveis a partir de propriedades de um objeto, auxilia evitando que referências temporárias desse objeto sejam criadas.
+
+### 2.1.6 Explique o funcionamento do Babel para aplicação.
+Babel permite utilizar os recursos mais atualizados da linguagem mesmo com os navegadores sendo incompatíveis, além de transformar a sintaxe de código.
