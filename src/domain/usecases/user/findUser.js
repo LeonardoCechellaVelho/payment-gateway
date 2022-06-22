@@ -7,16 +7,12 @@ const dependency = { UserRepository }
 
 const findUser = injection =>
   usecase('Find a User', {
-    // Input/Request metadata and validation 
     request: {
-      id: Number,
+      id: String,
     },
 
-    // Output/Response metadata
     response: User,
 
-    //Authorization with Audit
-    // authorize: (user) => (user.canFindOneUser ? Ok() : Err()),
     authorize: () => Ok(),
 
     setup: ctx => (ctx.di = Object.assign({}, dependency, injection)),
@@ -29,7 +25,6 @@ const findUser = injection =>
         message: `User entity not found by ID: ${id}`,
         payload: { entity: 'User', id }
       })
-      // ctx.ret is the return value of a use case
       return Ok(ctx.ret = user)
     })
   })

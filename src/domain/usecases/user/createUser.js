@@ -2,30 +2,28 @@ const { usecase, step, Ok, Err } = require('@herbsjs/herbs')
 const { herbarium } = require('@herbsjs/herbarium')
 const User = require('../../entities/user')
 const UserRepository = require('../../../infra/data/repositories/userRepository')
+const uuid = require('uuid')
+const jwtTokens = require('../../utils/jwt-helpers')
 
 const dependency = { UserRepository }
 
 const createUser = injection =>
   usecase('Create User', {
-    // Input/Request metadata and validation 
     request: {
-      nickname: String,
-      password: String
+      name: String,
+      email: String,
+      document: String
     },
 
-    // Output/Response metadata
     response: User,
 
-    //Authorization with Audit
-    // authorize: (user) => (user.canCreateUser ? Ok() : Err()),
     authorize: () => Ok(),
 
     setup: ctx => (ctx.di = Object.assign({}, dependency, injection)),
 
-    //Step description and function
     'Check if the User is valid': step(ctx => {
       ctx.user = User.fromJSON(ctx.req)
-      ctx.user.id = Math.floor(Math.random() * 100000)
+      ctx.user.id = uuid.v4();
       
       if (!ctx.user.isValid()) 
         return Err.invalidEntity({
@@ -34,15 +32,14 @@ const createUser = injection =>
           cause: ctx.user.errors 
         })
 
-      // returning Ok continues to the next step. Err stops the use case execution.
       return Ok() 
     }),
 
     'Save the User': step(async ctx => {
       const repo = new ctx.di.UserRepository(injection)
       const user = ctx.user
-      // ctx.ret is the return value of a use case
-      return (ctx.ret = await repo.insert(user))
+      await repo.insert(user)
+      return (ctx.ret = { "user_id": user.id, "token": jwtTokens(user)})
     })
   })
 

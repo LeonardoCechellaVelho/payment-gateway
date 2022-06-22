@@ -7,16 +7,12 @@ const dependency = { UserRepository }
 
 const deleteUser = injection =>
   usecase('Delete User', {
-    // Input/Request metadata and validation 
     request: {
-      id: Number
+      id: String
     },
 
-    // Output/Response metadata
     response: Boolean,
 
-    //Authorization with Audit
-    // authorize: (user) => (user.canDeleteUser ? Ok() : Err()),
     authorize: () => Ok(),
 
     setup: ctx => (ctx.di = Object.assign({}, dependency, injection)),
@@ -36,7 +32,6 @@ const deleteUser = injection =>
     'Delete the User': step(async ctx => {
       const repo = new ctx.di.UserRepository(injection)
       ctx.ret = await repo.delete(ctx.user)
-      // ctx.ret is the return value of a use case
       return Ok(ctx.ret)
     })
   })

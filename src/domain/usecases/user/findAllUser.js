@@ -7,16 +7,13 @@ const dependency = { UserRepository }
 
 const findAllUser = injection =>
   usecase('Find all Users', {
-    // Input/Request metadata and validation
     request: {
       limit: Number,
       offset: Number
     },
 
-    // Output/Response metadata
     response: [User],
 
-    //Authorization with Audit
     authorize: () => Ok(),
 
     setup: ctx => (ctx.di = Object.assign({}, dependency, injection)),
@@ -24,7 +21,6 @@ const findAllUser = injection =>
     'Find and return all the Users': step(async ctx => {
       const repo = new ctx.di.UserRepository(injection)
       const users = await repo.findAll(ctx.req)
-      // ctx.ret is the return value of a use case
       return Ok(ctx.ret = users)
     })
   })

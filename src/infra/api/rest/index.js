@@ -42,14 +42,6 @@ function uc2Controllers(injection) {
 }
 
 function server(controllers, app, config) {
-
-    /* Force (fake?) User on Request
-    app.use((req, res, next) => {
-        req.user = user
-        next()
-    })
-    */
-
     app.use(json({ limit: '50mb' }))
     app.use(cors())
 
@@ -62,10 +54,6 @@ function server(controllers, app, config) {
 async function rest(app, config) {
 
     const controllers = uc2Controllers(app, config)
-
-    /* Add custon controllers
-    controllers.push({ name: 'Search', post: herbarium.usecases.get('SearchTask') })
-    */
 
     server(controllers, app, config)
 }

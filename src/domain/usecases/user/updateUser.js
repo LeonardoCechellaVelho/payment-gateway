@@ -8,18 +8,15 @@ const dependency = { UserRepository }
 
 const updateUser = injection =>
   usecase('Update User', {
-    // Input/Request metadata and validation 
     request: {
-      id: Number,
-      nickname: String,
-      password: String
+      id: String,
+      name: String,
+      email: String,
+      document: String
     },
 
-    // Output/Response metadata
     response: User,
 
-    //Authorization with Audit
-    // authorize: (user) => (user.canUpdateUser ? Ok() : Err()),
     authorize: () => Ok(),
 
     setup: ctx => (ctx.di = Object.assign({}, dependency, injection)),
@@ -52,7 +49,6 @@ const updateUser = injection =>
 
     'Update the User': step(async ctx => {
       const repo = new ctx.di.UserRepository(injection)
-      // ctx.ret is the return value of a use case
       return (ctx.ret = await repo.update(ctx.user))
     })
 

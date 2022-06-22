@@ -5,9 +5,10 @@ exports.up = async function (knex) {
             if (exists) return
             return knex.schema
                 .createTable('users', function (table) {
-                    table.integer('id').primary()
-                    table.string('nickname')
-                    table.string('password')
+                    table.uuid('id').primary()
+                    table.string('name')
+                    table.string('email')
+                    table.string('document')
                     table.timestamps()
                 })
         })
