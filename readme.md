@@ -21,3 +21,6 @@ Desestruturação é bom para criar multiplas variáveis a partir de propriedade
 
 ### 2.1.6 Explique o funcionamento do Babel para aplicação.
 Babel permite utilizar os recursos mais atualizados da linguagem mesmo com os navegadores sendo incompatíveis, além de transformar a sintaxe de código.
+
+### 2.1.7 Porque devemos utilizar o webpack para aplicações em produção?
+Pois é possível organizar o projeto em arquivos separados e gerar um arquivo só de forma automatizada.
