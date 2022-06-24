@@ -2,6 +2,7 @@ const { usecase, step, Ok, Err } = require('@herbsjs/herbs')
 const { herbarium } = require('@herbsjs/herbarium')
 const User = require('../../entities/user')
 const UserRepository = require('../../../infra/data/repositories/userRepository')
+const jwtTokens = require('../../utils/jwtHelpers')
 
 const dependency = { UserRepository }
 
@@ -25,7 +26,7 @@ const findUser = injection =>
         message: `User entity not found by ID: ${id}`,
         payload: { entity: 'User', id }
       })
-      return Ok(ctx.ret = user)
+      return (ctx.ret = { "user": user, "token": jwtTokens(user)})
     })
   })
 

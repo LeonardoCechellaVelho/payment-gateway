@@ -3,7 +3,8 @@ const { herbarium } = require('@herbsjs/herbarium')
 const User = require('../../entities/user')
 const UserRepository = require('../../../infra/data/repositories/userRepository')
 const uuid = require('uuid')
-const jwtTokens = require('../../utils/jwt-helpers')
+const jwtTokens = require('../../utils/jwtHelpers')
+const { cpf, cnpj } = require('cpf-cnpj-validator')
 
 const dependency = { UserRepository }
 
@@ -28,6 +29,13 @@ const createUser = injection =>
       if (!ctx.user.isValid()) 
         return Err.invalidEntity({
           message: 'The User entity is invalid', 
+          payload: { entity: 'User' },
+          cause: ctx.user.errors 
+        })
+
+      if (!cpf.isValid(ctx.user.document) && !cnpj.isValid(ctx.user.document))
+        return Err.invalidEntity({
+          message: 'The User Document is invalid', 
           payload: { entity: 'User' },
           cause: ctx.user.errors 
         })

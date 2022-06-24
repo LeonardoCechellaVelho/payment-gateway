@@ -3,6 +3,7 @@ const { herbarium } = require('@herbsjs/herbarium')
 const merge = require('deepmerge')
 const User = require('../../entities/user')
 const UserRepository = require('../../../infra/data/repositories/userRepository')
+const { cpf, cnpj } = require('cpf-cnpj-validator')
 
 const dependency = { UserRepository }
 
@@ -38,6 +39,13 @@ const updateUser = injection =>
       const oldUser = ctx.user
       const newUser = User.fromJSON(merge.all([ oldUser, ctx.req ]))
       ctx.user = newUser
+
+      if (!cpf.isValid(ctx.user.document) && !cnpj.isValid(ctx.user.document))
+        return Err.invalidEntity({
+          message: 'The User Document is invalid', 
+          payload: { entity: 'User' },
+          cause: ctx.user.errors 
+        })
 
       return newUser.isValid() ? Ok() : Err.invalidEntity({
         message: `User is invalid`,

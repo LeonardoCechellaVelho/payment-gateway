@@ -1,6 +1,18 @@
 # Leonardo Cechella Velho - Teste DOUTBOX
 
-Projeto para ser aplicado no teste da Doutbox, é uma API de um gateway de pagamentos REST feita em NodeJS, requisições autenticadas com JWT, com o armazenamento de dados feito pelo PostgreSql, tudo isso com o auxílio da biblioteca Herbs.
+Projeto para ser aplicado no teste da Doutbox, é uma API de um gateway de pagamentos REST feita em NodeJS, requisições autenticadas com JWT, com o armazenamento de dados feito pelo PostgreSql, tudo isso com o auxílio da biblioteca HerbsJS.
+
+# API de Pagamentos
+
+Um cliente Doutbox requisitou a construção de um gateway de pagamentos, diversas lojas e plaicativos irão integrar seus backends para processar os pagamentos dos seus clientes.
+
+## Rodando o projeto
+
+    $ npm install
+    $ npm run knex:migrate
+    $ npm start
+
+Você receberá essa mensagem -> 🚀 Server UP and 🌪️  - http://localhost:3000/
 
 # Perguntas Técnicas
 
@@ -30,3 +42,7 @@ Clean Architecture tem como objetivo organizar o código em camadas de modo que 
 
 ### 2.1.9 O que é uma API REST?
 API REST é um conjunto de regras da arquitetura para a construção de uma API.
+
+## Licença
+
+- [MIT License](https://github.com/herbsjs/todolist-on-herbs/blob/master/LICENSE)

@@ -3,6 +3,7 @@ const cors = require('cors')
 const { json } = require('body-parser')
 const { generateRoutes } = require('@herbsjs/herbs2rest')
 const { herbarium } = require('@herbsjs/herbarium')
+const jwt = require('jsonwebtoken')
 
 function uc2Controllers(injection) {
 
@@ -41,7 +42,22 @@ function uc2Controllers(injection) {
     return controllers
 }
 
+function authenticateToken(req) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token == null) return req.user = "Unauthorized";
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
+        if(error) return req.user = "Forbidden";
+        return req.user = "Authorized";
+    })
+}
+
 function server(controllers, app, config) {
+    app.use((req, res, next) => {
+        authenticateToken(req);
+        next();
+    })
     app.use(json({ limit: '50mb' }))
     app.use(cors())
 
