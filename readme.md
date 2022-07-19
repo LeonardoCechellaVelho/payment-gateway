@@ -1,10 +1,10 @@
 # Leonardo Cechella Velho
 
-Projeto para ser aplicado no teste da Doutbox, é uma API de um gateway de pagamentos REST feita em NodeJS, requisições autenticadas com JWT, com o armazenamento de dados feito pelo PostgreSql, tudo isso com o auxílio da biblioteca HerbsJS.
+API de um gateway de pagamentos REST feita em NodeJS, requisições autenticadas com JWT, com o armazenamento de dados feito pelo PostgreSql, tudo isso com o auxílio da biblioteca HerbsJS.
 
 # API de Pagamentos
 
-Um cliente Doutbox requisitou a construção de um gateway de pagamentos, diversas lojas e plaicativos irão integrar seus backends para processar os pagamentos dos seus clientes.
+Construção de um gateway de pagamentos, diversas lojas e plaicativos irão integrar seus backends para processar os pagamentos dos seus clientes.
 
 ## Rodando o projeto
 
